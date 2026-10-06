@@ -26,7 +26,9 @@ export function Header() {
     const header = headerRef.current
     if (!header || typeof ResizeObserver === 'undefined') return
     const apply = () => {
-      document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`)
+      const next = `${header.offsetHeight}px`
+      if (document.documentElement.style.getPropertyValue('--header-h') === next) return
+      document.documentElement.style.setProperty('--header-h', next)
     }
     apply()
     const observer = new ResizeObserver(apply)

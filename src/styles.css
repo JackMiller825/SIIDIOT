@@ -307,7 +307,7 @@ a {
   gap: 0.65rem;
   width: min(1440px, calc(100% - 1.25rem));
   margin-inline: auto;
-  min-height: var(--header-h);
+  min-height: 4.75rem;
   position: relative;
 }
 
