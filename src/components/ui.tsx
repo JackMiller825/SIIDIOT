@@ -58,7 +58,7 @@ const COMING_SOON = 'Coming Soon..'
 export function ContractAddress({ tone = 'paper', showKicker = true }: { tone?: 'paper' | 'dark'; showKicker?: boolean }) {
   const address = resolveProject(site).address
   const value = address ?? COMING_SOON
-  const [notice, setNotice] = useState('')
+  const [copied, setCopied] = useState(false)
   const [manual, setManual] = useState(false)
   const manualRef = useRef<HTMLTextAreaElement>(null)
 
@@ -72,11 +72,11 @@ export function ContractAddress({ tone = 'paper', showKicker = true }: { tone?: 
     const ok = await copyText(value)
     if (ok) {
       setManual(false)
-      setNotice(address ? 'Copied the full contract address.' : 'Copied.')
+      setCopied(true)
       return
     }
+    setCopied(false)
     setManual(true)
-    setNotice('Could not copy automatically. Select the text below.')
   }
 
   return (
@@ -84,13 +84,15 @@ export function ContractAddress({ tone = 'paper', showKicker = true }: { tone?: 
       {showKicker ? <p className="contract-kicker">Contract</p> : null}
       <div className="address-line">
         <p className={cx('address', !address && 'is-pending')}>{value}</p>
-        <button type="button" className="btn btn-small" onClick={onCopy}>
-          Copy address
+        <button type="button" className="btn btn-small" onClick={onCopy} aria-live="polite">
+          {copied ? 'Copied' : 'Copy address'}
         </button>
       </div>
-      <p className="contract-notice" role="status" aria-live="polite">
-        {notice}
-      </p>
+      {manual ? (
+        <p className="contract-notice" role="status">
+          Could not copy automatically. Select the text below.
+        </p>
+      ) : null}
       {manual ? (
         <textarea
           ref={manualRef}

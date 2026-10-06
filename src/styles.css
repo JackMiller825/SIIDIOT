@@ -1068,15 +1068,24 @@ blockquote footer {
 }
 
 .fact-list {
-  margin: 1.3rem 0 1.6rem;
+  display: grid;
+  grid-auto-rows: 1fr;
+  margin: 1.3rem 0 0;
 }
 
 .fact-row {
   display: grid;
   grid-template-columns: minmax(7.5rem, 12rem) minmax(0, 1fr);
   gap: 0.35rem 1rem;
+  align-items: center;
+  min-height: 4.75rem;
   border-top: 1px solid rgba(255, 244, 220, 0.14);
-  padding: 0.7rem 0;
+  padding: 0.85rem 0;
+}
+
+.facts .contract,
+.facts .address-line {
+  margin: 0;
 }
 
 .fact-row dt {
@@ -1112,6 +1121,59 @@ blockquote footer {
   font-family: var(--display);
   font-weight: 700;
   font-size: 1.2rem;
+}
+
+.how-to-buy {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  color: var(--ink);
+}
+
+.how-to-buy h2,
+.how-to-buy h3,
+.how-to-buy p {
+  color: var(--ink);
+}
+
+.how-to-buy h2 {
+  margin-bottom: 1.4rem;
+}
+
+.how-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.how-steps li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  align-items: start;
+}
+
+.how-num {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  color: var(--orange);
+}
+
+.how-steps h3 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.35rem, 1.1rem + 0.6vw, 1.7rem);
+}
+
+.how-steps p {
+  margin: 0;
+  max-width: 68ch;
+}
+
+.how-steps a {
+  color: #9a3d00;
+  font-weight: 700;
 }
 
 .manifest {

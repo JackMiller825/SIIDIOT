@@ -1,5 +1,6 @@
 import { site } from '../config'
 import { tokenCopy } from '../copy'
+import { HowToBuy } from './HowToBuy'
 import { ContractAddress } from './ui'
 
 function taxLabel(): string {
@@ -37,6 +38,7 @@ export function TokenFacts() {
             </div>
           </dl>
         </div>
+        <HowToBuy />
       </div>
     </section>
   )

@@ -3,7 +3,6 @@ import { Community } from './components/Community'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { FailedTests } from './components/FailedTests'
 import { FindEsc } from './components/FindEsc'
-import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Hoard } from './components/Hoard'
@@ -30,7 +29,6 @@ function Page() {
         <TokenFacts />
         <Community />
       </main>
-      <Footer />
     </>
   )
 }
