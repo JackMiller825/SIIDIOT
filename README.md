@@ -24,17 +24,19 @@ Preview serves the production build on port **4732**.
 
 ## Vite base path
 
-Asset and download URLs are prefixed with Vite's `base` (`import.meta.env.BASE_URL`). The default base is `/`, which is correct for a custom domain or a user site.
+Asset and download URLs are prefixed with Vite's `base` (`import.meta.env.BASE_URL`). The default base is `/`, which is correct for local development, a custom domain, or a user site.
 
-For a GitHub **project** page (`https://username.github.io/repository/`), set the base to the repository path and build again:
+## GitHub Pages
+
+The public site is [https://jackmiller825.github.io/SIIDIOT/](https://jackmiller825.github.io/SIIDIOT/).
+
+Pushes to `main` run `.github/workflows/pages.yml`. That workflow builds with the project-page base and deploys the `dist/` folder:
 
 ```bash
-npx vite build --base=/repository/
+npm run build -- --base=/SIIDIOT/
 ```
 
-Or add `base: '/repository/'` to the existing `defineConfig({ ... })` call in `vite.config.ts`.
-
-Upload the contents of `dist/`, not the `dist` folder itself. GitHub Pages should serve `index.html` from that folder. Anchor links stay on one page, so no SPA fallback is required.
+The repository name is case-sensitive in that path. Local `npm run dev` stays on `/`. Anchor links stay on one page, so no SPA fallback is required.
 
 ## Domain and social links
 
