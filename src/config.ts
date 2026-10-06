@@ -77,7 +77,7 @@ export const site: ProjectConfig = {
   name: 'Superintelligent Idiot',
   ticker: '$SIIDIOT',
   chain: 'Ethereum',
-  domain: null,
+  domain: 'https://siidiot.site',
   xUrl: null,
   telegramUrl: null,
   contractAddress: null,

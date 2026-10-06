@@ -14,7 +14,7 @@ function withConfig(patch: Partial<ProjectConfig>): ProjectConfig {
 describe('project gates', () => {
   it('ships prelaunch with every unknown field empty', () => {
     expect(site.launchStatus).toBe('prelaunch')
-    expect(site.domain).toBeNull()
+    expect(site.domain).toBe('https://siidiot.site')
     expect(site.contractAddress).toBeNull()
     expect(site.swapUrl).toBeNull()
     expect(site.chartUrl).toBeNull()
@@ -67,8 +67,12 @@ describe('project gates', () => {
   })
 
   it('builds a caption without inventing a domain', () => {
-    expect(shareCaption(site)).toBe('Superintelligent Idiot ($SIIDIOT). Super intelligence. Zero common sense.')
-    expect(shareCaption(site)).not.toContain('http')
+    expect(shareCaption(site)).toBe(
+      'Superintelligent Idiot ($SIIDIOT). Super intelligence. Zero common sense. https://siidiot.site',
+    )
+    const withoutDomain = shareCaption(withConfig({ domain: null }))
+    expect(withoutDomain).toBe('Superintelligent Idiot ($SIIDIOT). Super intelligence. Zero common sense.')
+    expect(withoutDomain).not.toContain('http')
     const withDomain = shareCaption(withConfig({ domain: 'https://lab.example/' }))
     expect(withDomain).toContain('https://lab.example')
     expect(withDomain).not.toContain(address)

@@ -28,15 +28,11 @@ Asset and download URLs are prefixed with Vite's `base` (`import.meta.env.BASE_U
 
 ## GitHub Pages
 
-The public site is [https://jackmiller825.github.io/SIIDIOT/](https://jackmiller825.github.io/SIIDIOT/).
+The public site is [https://siidiot.site/](https://siidiot.site/). GitHub Pages serves that custom domain from the site root, so the production build keeps Vite's base at `/`. `public/CNAME` keeps the domain attached on each deploy.
 
-Pushes to `main` run `.github/workflows/pages.yml`. That workflow builds with the project-page base and deploys the `dist/` folder:
+Pushes to `main` run `.github/workflows/pages.yml`, which runs `npm run build` and deploys `dist/`. Local `npm run dev` uses the same root base. Anchor links stay on one page, so no SPA fallback is required.
 
-```bash
-npm run build -- --base=/SIIDIOT/
-```
-
-The repository name is case-sensitive in that path. Local `npm run dev` stays on `/`. Anchor links stay on one page, so no SPA fallback is required.
+For a project URL such as `https://username.github.io/repository/` instead of a custom domain, build with `--base=/repository/` so asset paths match that prefix.
 
 ## Domain and social links
 
@@ -73,8 +69,8 @@ Until you replace the nulls, the site shows:
 - Buy, chart, and Etherscan controls disabled
 - X and Telegram controls disabled
 - Total supply, allocation, taxes, liquidity, and ownership pending
-- No canonical URL and no social preview image URL
-- No share-to-X button (copy caption still works)
+- Canonical and social preview URLs use `https://siidiot.site`
+- Share on X includes that domain (copy caption still works)
 - The line “Trading links will appear here when the project is ready.”
 
 Do not invent addresses, tax rates, supply, liquidity burns, renounced ownership, audits, or follower counts.
