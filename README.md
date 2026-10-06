@@ -48,7 +48,7 @@ Still in `src/config.ts`:
 
 | Field | What it does |
 | --- | --- |
-| `contractAddress` | Full `0x` + 40 hex characters. Anything else stays “Contract address pending” and copying stays off. The copier writes the full address, not a shortened preview. |
+| `contractAddress` | Full `0x` + 40 hex characters. Anything else shows “Coming Soon..”. Copy address copies the full address when it is valid, and copies the coming-soon text until then. |
 | `launchStatus` | `"prelaunch"` (default) or `"launched"`. |
 | `swapUrl` | Buy links turn on only when status is `"launched"` **and** this is a valid http(s) URL. |
 | `chartUrl` | Chart links. |
@@ -65,10 +65,11 @@ A valid contract address does **not** mean the token is launched. Leave `launchS
 
 Until you replace the nulls, the site shows:
 
-- Contract address pending, with copying disabled
-- Buy, chart, and Etherscan controls disabled
-- X and Telegram controls disabled
-- Total supply, allocation, taxes, liquidity, and ownership pending
+- Contract address shows “Coming Soon..” until a real `0x` address is set. Copy address copies that text, or the full address once one is configured.
+- Buy, chart, and Etherscan controls are omitted until those URLs exist
+- X is `https://x.com/siidiot_eth` and Telegram is `https://t.me/SuperIntelligentIDIOT`
+- Total supply is 1,000,000,000, tax is 0%, and ownership states that LP tokens are burnt and contract ownership is renounced
+- Allocation and liquidity stay pending
 - Canonical and social preview URLs use `https://siidiot.site`
 - Share on X includes that domain (copy caption still works)
 - The line “Trading links will appear here when the project is ready.”

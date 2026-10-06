@@ -53,28 +53,54 @@ export function GatedLink({ href, label, pendingLabel, className, pendingClassNa
   )
 }
 
-export function ContractAddress({ tone = 'paper' }: { tone?: 'paper' | 'dark' }) {
+const COMING_SOON = 'Coming Soon..'
+
+export function ContractAddress({ tone = 'paper', showKicker = true }: { tone?: 'paper' | 'dark'; showKicker?: boolean }) {
   const address = resolveProject(site).address
+  const value = address ?? COMING_SOON
   const [notice, setNotice] = useState('')
+  const [manual, setManual] = useState(false)
+  const manualRef = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(() => {
+    if (!manual) return
+    manualRef.current?.focus()
+    manualRef.current?.select()
+  }, [manual])
 
   async function onCopy() {
-    if (!address) return
-    const ok = await copyText(address)
-    setNotice(ok ? 'Copied the full contract address.' : 'Could not copy the contract address.')
+    const ok = await copyText(value)
+    if (ok) {
+      setManual(false)
+      setNotice(address ? 'Copied the full contract address.' : 'Copied.')
+      return
+    }
+    setManual(true)
+    setNotice('Could not copy automatically. Select the text below.')
   }
 
   return (
     <div className={cx('contract', tone === 'dark' ? 'contract-dark' : 'contract-paper')}>
-      <p className="contract-kicker">Contract</p>
-      <p className={cx('address', !address && 'is-pending')}>
-        {address ?? 'Contract address pending'}
-      </p>
-      <button type="button" className="btn btn-small" onClick={onCopy} disabled={!address}>
-        Copy address
-      </button>
+      {showKicker ? <p className="contract-kicker">Contract</p> : null}
+      <div className="address-line">
+        <p className={cx('address', !address && 'is-pending')}>{value}</p>
+        <button type="button" className="btn btn-small" onClick={onCopy}>
+          Copy address
+        </button>
+      </div>
       <p className="contract-notice" role="status" aria-live="polite">
         {notice}
       </p>
+      {manual ? (
+        <textarea
+          ref={manualRef}
+          className="manual-caption"
+          readOnly
+          value={value}
+          rows={2}
+          aria-label="Contract text to copy"
+        />
+      ) : null}
     </div>
   )
 }

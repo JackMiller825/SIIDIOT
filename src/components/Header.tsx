@@ -1,12 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { site } from '../config'
 import { navItems } from '../copy'
 import { images } from '../lib/images'
-import { resolveProject } from '../lib/project'
 import { MotionToggle } from '../motion'
-import { GatedLink, SmartImage } from './ui'
-
-const links = resolveProject(site)
+import { SmartImage } from './ui'
 
 function focusSection(id: string) {
   const target = document.getElementById(id)
@@ -101,20 +97,6 @@ export function Header() {
       <a className="btn btn-ghost" href="#community" onClick={() => onNavigate?.('community')}>
         Join
       </a>
-      <GatedLink
-        href={links.chartUrl}
-        label="Chart"
-        pendingLabel="Chart pending"
-        className="btn btn-ghost"
-        pendingClassName="btn btn-pending"
-      />
-      <GatedLink
-        href={links.purchaseUrl}
-        label="Buy"
-        pendingLabel="Buy pending"
-        className="btn btn-primary"
-        pendingClassName="btn btn-pending"
-      />
     </>
   )
 

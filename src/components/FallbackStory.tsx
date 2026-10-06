@@ -1,6 +1,5 @@
 import { site } from '../config'
-import { brain, community, experiments, footerCopy, gameCopy, hero, hoard, incident, labLog, meme, tokenCopy } from '../copy'
-import { publicUrl } from '../lib/assets'
+import { brain, community, experiments, footerCopy, gameCopy, hero, hoard, incident, labLog, tokenCopy } from '../copy'
 import { resolveProject } from '../lib/project'
 
 const links = resolveProject(site)
@@ -14,7 +13,7 @@ export function FallbackStory() {
         <p className="punch">{hero.punchline}</p>
         <p>{hero.description}</p>
         <p>{hero.tagline}</p>
-        <p>{links.address ?? 'Contract address pending'}</p>
+        <p>{links.address ?? 'Coming Soon..'}</p>
         <h2>{incident.heading}</h2>
         <p>{incident.body}</p>
         <p>{incident.caption}</p>
@@ -49,30 +48,23 @@ export function FallbackStory() {
           ))}
         </ul>
         <h2>{tokenCopy.heading}</h2>
-        <p>
-          {site.chain}. {site.ticker}.
-        </p>
-        <p>{tokenCopy.prelaunch}</p>
-        <ol>
-          {tokenCopy.steps.map((step) => (
-            <li key={step}>{step}</li>
-          ))}
-        </ol>
+        <p>Contract Address: {links.address ?? 'Coming Soon..'}</p>
+        <p>Total Supply: {site.totalSupply}</p>
+        <p>Tax: {site.taxes?.buy}</p>
+        <p>Ownership: {site.ownership.status}</p>
         <h2>{community.heading}</h2>
         <p>{community.body}</p>
-        <h2>{meme.heading}</h2>
-        <p>{meme.body}</p>
-        <ul>
-          {site.downloads.map((item) => (
-            <li key={item.path}>
-              <a href={publicUrl(item.path)} download={item.filename}>
-                Download {item.filename}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {links.xUrl ? (
+          <p>
+            <a href={links.xUrl}>X</a>
+          </p>
+        ) : null}
+        {links.telegramUrl ? (
+          <p>
+            <a href={links.telegramUrl}>Telegram</a>
+          </p>
+        ) : null}
         <p>{footerCopy.disclaimer}</p>
-        <p>{footerCopy.signoff}</p>
       </div>
     </main>
   )

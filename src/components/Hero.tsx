@@ -1,10 +1,6 @@
-import { site } from '../config'
 import { hero } from '../copy'
 import { images } from '../lib/images'
-import { resolveProject } from '../lib/project'
-import { ContractAddress, GatedLink, SmartImage } from './ui'
-
-const links = resolveProject(site)
+import { ContractAddress, SmartImage } from './ui'
 
 export function Hero() {
   return (
@@ -24,20 +20,6 @@ export function Hero() {
           <p>{hero.description}</p>
           <p className="tagline">{hero.tagline}</p>
           <div className="hero-actions">
-            <GatedLink
-              href={links.purchaseUrl}
-              label="Buy $SIIDIOT"
-              pendingLabel="Buy pending"
-              className="btn btn-primary"
-              pendingClassName="btn btn-pending"
-            />
-            <GatedLink
-              href={links.chartUrl}
-              label="View chart"
-              pendingLabel="Chart pending"
-              className="btn btn-ink"
-              pendingClassName="btn btn-pending"
-            />
             <a className="btn btn-ink" href="#incident">
               Enter the lab
             </a>

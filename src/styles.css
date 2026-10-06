@@ -647,12 +647,19 @@ html[data-motion="on"] .hero-mascot {
   margin-bottom: 0.2rem;
 }
 
+.address-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+}
+
 .address {
   font-family: var(--mono);
   font-size: 0.95rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
-  margin: 0 0 0.65rem;
+  margin: 0;
 }
 
 .contract-notice {
@@ -1174,6 +1181,34 @@ blockquote footer {
   padding: clamp(2.5rem, 6vw, 4rem) 0 3rem;
 }
 
+.footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+}
+
+.footer-social {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.65rem;
+}
+
+.footer-social a {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 209, 92, 0.75);
+  color: var(--gold);
+}
+
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+}
+
 .footer-name {
   font-family: var(--display);
   font-weight: 700;
@@ -1219,6 +1254,7 @@ button.footer-link:disabled {
 
 .disclaimer {
   max-width: 70ch;
+  margin: 0;
   font-size: 0.98rem;
   color: #f6edd8;
 }
@@ -1265,6 +1301,17 @@ button.footer-link:disabled {
 
 .fit-cover {
   object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-social {
+    align-self: flex-end;
+  }
 }
 
 @media (max-width: 520px) {

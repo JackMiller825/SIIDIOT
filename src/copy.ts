@@ -121,7 +121,7 @@ export const labLog = {
 }
 
 export const tokenCopy = {
-  heading: 'The actual token details',
+  heading: 'Tokenomics',
   lead: 'Names, links, and blanks below are the project record. The laboratory stories above are fiction.',
   prelaunch: 'Trading links will appear here when the project is ready.',
   steps: [
