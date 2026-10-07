@@ -80,7 +80,7 @@ export const site: ProjectConfig = {
   domain: 'https://siidiot.site',
   xUrl: 'https://x.com/siidiot_eth',
   telegramUrl: 'https://t.me/SuperIntelligentIDIOT',
-  contractAddress: null,
+  contractAddress: '0x16f3ffe2f4f111c9dabc5d8bdee8fb833cdbf3a7',
   swapUrl: null,
   chartUrl: null,
   explorerUrl: null,

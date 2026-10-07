@@ -65,7 +65,7 @@ A valid contract address does **not** mean the token is launched. Leave `launchS
 
 Until you replace the nulls, the site shows:
 
-- Contract address shows “Coming Soon..” until a real `0x` address is set. Copy address copies that text, or the full address once one is configured.
+- Contract address is `0x16f3ffe2f4f111c9dabc5d8bdee8fb833cdbf3a7`. Copy address copies that full value.
 - Buy, chart, and Etherscan controls are omitted until those URLs exist
 - X is `https://x.com/siidiot_eth` and Telegram is `https://t.me/SuperIntelligentIDIOT`
 - Total supply is 1,000,000,000, tax is 0%, and ownership states that LP tokens are burnt and contract ownership is renounced

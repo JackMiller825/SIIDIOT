@@ -15,7 +15,7 @@ describe('project gates', () => {
   it('ships prelaunch with every unknown field empty', () => {
     expect(site.launchStatus).toBe('prelaunch')
     expect(site.domain).toBe('https://siidiot.site')
-    expect(site.contractAddress).toBeNull()
+    expect(site.contractAddress).toBe('0x16f3ffe2f4f111c9dabc5d8bdee8fb833cdbf3a7')
     expect(site.swapUrl).toBeNull()
     expect(site.chartUrl).toBeNull()
     expect(site.explorerUrl).toBeNull()
@@ -28,7 +28,7 @@ describe('project gates', () => {
     const resolved = resolveProject(site)
     expect(resolved.purchaseUrl).toBeNull()
     expect(resolved.chartUrl).toBeNull()
-    expect(resolved.address).toBeNull()
+    expect(resolved.address).toBe('0x16f3ffe2f4f111c9dabc5d8bdee8fb833cdbf3a7')
     expect(resolved.launched).toBe(false)
   })
 
